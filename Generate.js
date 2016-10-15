@@ -2,6 +2,12 @@ const fs = require('fs')
 const _ = require('lodash')
 const path = require('path')
 
+function t(s,d){
+ for(let p in d)
+   s=s.replace(new RegExp('---'+p+'---','g'), d[p]);
+ return s;
+}
+
 class Generate {
   constructor (options) {
     this.file = 'demo.txt'
@@ -11,7 +17,8 @@ class Generate {
   data () {
     return {
       uppercaseName: this.name.toUpperCase(),
-      lowercaseName: this.name
+      lowercaseName: this.name,
+      capitalizeName: this.name.substr(0,1).toUpperCase() + this.name.substr(1)
     }
   }
   getFileContents (file) {
@@ -43,12 +50,8 @@ class Generate {
         if (item.type == 'directory') {
           fs.mkdirSync(item.path.substr(root.length + 1))
         } else if (item.type == 'file') {
-          let fullPath = item.path.substr(root.length + 1)
+          const fullPath = t(item.path.substr(root.length + 1), this.data())
           const contents = this.getFileContents(item.path)
-          const path = fullPath.split('/')
-          let fileName = path.pop()
-          const ext = fileName.split('.').pop()
-          if (fileName.substr(0,1)==='_') fullPath = (path ? path + '/' : '') + this.name + '.' + ext
           fs.writeFileSync(fullPath, _.template(contents)(this.data()))
         }
       })
