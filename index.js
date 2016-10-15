@@ -1,9 +1,23 @@
 
-
 const args = process.argv.slice(2)
-const name = args[0] || 'not-named'
-const target = args[1] || '.'
-const Generate = require('./Generate')
+const component = args[0]
+const name = args[1] || 'not-named'
+const target = args[2] || '.'
 
-console.log('generating', name, 'in', target)
-const cast = new Generate({name, target}).build()
+const chalk = require('chalk')
+const Generate = require('./src/Generate')
+const moduleAvailable = require('./src/moduleAvailable')
+
+const prefix = 'caster-'
+
+if (moduleAvailable(prefix + component)) {
+  console.log('')
+  console.log( chalk.blue('  -={  Caster  }=-'))
+  console.log('')
+  console.log( chalk.yellow('casting :', component ))
+  console.log( chalk.yellow('generating', name, 'in', target))
+  console.log('')
+
+  const cast = new Generate({component: prefix + component, name, target}).build()
+
+}

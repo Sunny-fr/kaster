@@ -10,7 +10,7 @@ function t(s,d){
 
 class Generate {
   constructor (options) {
-    this.file = 'demo.txt'
+    this.component = options.component
     this.target = options.target
     this.name = options.name
   }
@@ -44,14 +44,16 @@ class Generate {
     })
   }
   build () {
-    const root = 'template'
+    const root = 'node_modules/' + this.component + '/template'
+    const base = this.target + '/'
     this.getStructure(root).then(structure => {
       _.each(structure, item => {
         if (item.type == 'directory') {
-          fs.mkdirSync(item.path.substr(root.length + 1))
+          fs.mkdirSync(base + item.path.substr(root.length + 1))
         } else if (item.type == 'file') {
-          const fullPath = t(item.path.substr(root.length + 1), this.data())
+          const fullPath = base + t(item.path.substr(root.length + 1), this.data())
           const contents = this.getFileContents(item.path)
+          //console.log(contents)
           fs.writeFileSync(fullPath, _.template(contents)(this.data()))
         }
       })

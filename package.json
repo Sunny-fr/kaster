@@ -3,8 +3,12 @@
   "version": "0.0.1",
   "description": "",
   "main": "index.js",
+  "bin": {
+    "cast": "./bin/cast"
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "cast": "./bin/cast"
   },
   "author": {
     "name": "Alaa El Helw",
@@ -17,6 +21,8 @@
   },
   "license": "ISC",
   "dependencies": {
+    "caster-redux-collection-component": "github:sunny-fr/caster-redux-collection-component",
+    "chalk": "^1.1.3",
     "lodash": "^4.16.4"
   },
   "bugs": {
