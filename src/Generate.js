@@ -8,6 +8,12 @@ function t(s,d){
  return s;
 }
 
+
+function log(str) {
+  console.log( chalk.green(str))
+}
+
+
 class Generate {
   constructor (options) {
     this.component = options.component
@@ -50,11 +56,14 @@ class Generate {
       _.each(structure, item => {
         if (item.type == 'directory') {
           fs.mkdirSync(base + item.path.substr(root.length + 1))
+          log('| ' + item.path.substr(root.length + 1))
         } else if (item.type == 'file') {
           const fullPath = base + t(item.path.substr(root.length + 1), this.data())
           const contents = this.getFileContents(item.path)
           //console.log(contents)
           fs.writeFileSync(fullPath, _.template(contents)(this.data()))
+
+          log('-- ' + t(item.path.substr(root.length + 1), this.data()))
         }
       })
     }).catch(err=>{
