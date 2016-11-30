@@ -53,8 +53,8 @@ class Generate {
   build () {
     const root = 'node_modules/' + this.component + '/template'
     const base = this.target + '/'
-    this.getStructure(root).then(structure => {
-      _.each(structure, item => {
+    this.getStructure(root).then( (structure) => {
+      _.each( (structure, item) => {
         if (item.type == 'directory') {
           fs.mkdirSync(base + item.path.substr(root.length + 1))
           log('| ' + item.path.substr(root.length + 1))
@@ -63,8 +63,7 @@ class Generate {
           const contents = this.getFileContents(item.path)
           //console.log(contents)
           fs.writeFileSync(fullPath, _.template(contents)(this.data()))
-
-          log('-- ' + t(item.path.substr(root.length + 1), this.data()))
+          log('  -- ' + t(item.path.substr(root.length + 1), this.data()))
         }
       })
     }).catch(err=>{
