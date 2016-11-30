@@ -11,7 +11,7 @@ function t(s,d){
 
 
 function log(str) {
-  console.log(chalk.green(str))
+  console.log( chalk.green(str))
 }
 
 
@@ -54,7 +54,7 @@ class Generate {
     const root = 'node_modules/' + this.component + '/template'
     const base = this.target + '/'
     this.getStructure(root).then(structure => {
-      _.each((structure, item) => {
+      _.each(structure, item => {
         if (item.type == 'directory') {
           fs.mkdirSync(base + item.path.substr(root.length + 1))
           log('| ' + item.path.substr(root.length + 1))
