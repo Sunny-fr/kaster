@@ -1,6 +1,7 @@
 const fs = require('fs')
 const _ = require('lodash')
 const path = require('path')
+const chalk = require('chalk')
 
 function t(s,d){
  for(let p in d)
@@ -10,7 +11,7 @@ function t(s,d){
 
 
 function log(str) {
-  console.log( chalk.green(str))
+  console.log(chalk.green(str))
 }
 
 
