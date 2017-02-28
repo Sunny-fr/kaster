@@ -1,10 +1,10 @@
 {
-  "name": "caster",
-  "version": "0.0.4",
+  "name": "kaster",
+  "version": "0.0.5",
   "description": "",
   "main": "index.js",
   "bin": {
-    "cast": "./bin/cast"
+    "cast": "./bin/kast"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -13,11 +13,11 @@
   "author": {
     "name": "Alaa El Helw",
     "email": "sicksadsun@gmail.com",
-    "url": "https://github.com/Sunny-fr/caster"
+    "url": "https://github.com/Sunny-fr/kaster"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/Sunny-fr/caster.git"
+    "url": "https://github.com/Sunny-fr/kaster.git"
   },
   "license": "ISC",
   "dependencies": {
@@ -25,7 +25,7 @@
     "lodash": "^4.16.4"
   },
   "bugs": {
-    "url": "https://github.com/Sunny-fr/caster/issues"
+    "url": "https://github.com/Sunny-fr/kaster/issues"
   },
-  "homepage": "https://github.com/Sunny-fr/caster#readme"
+  "homepage": "https://github.com/Sunny-fr/kaster#readme"
 }

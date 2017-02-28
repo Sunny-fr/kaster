@@ -1,2 +1,2 @@
-# caster
+# kaster
 Simple Generator
