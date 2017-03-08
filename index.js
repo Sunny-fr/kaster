@@ -8,11 +8,11 @@ const chalk = require('chalk')
 const Generate = require('./src/Generate')
 const moduleAvailable = require('./src/moduleAvailable')
 
-const prefix = 'caster-'
+const prefix = 'kaster-'
 
 if (moduleAvailable(prefix + component)) {
   console.log('')
-  console.log( chalk.blue('  -={  Caster  }=-'))
+  console.log( chalk.blue('  -={  Kaster  }=-'))
   console.log('')
   console.log( chalk.yellow('casting :', component ))
   console.log( chalk.yellow('generating', name, 'in', target))

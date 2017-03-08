@@ -4,11 +4,11 @@
   "description": "",
   "main": "index.js",
   "bin": {
-    "cast": "./bin/kast"
+    "kast": "./bin/kast"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "cast": "./bin/cast"
+    "kast": "./bin/cast"
   },
   "author": {
     "name": "Alaa El Helw",
