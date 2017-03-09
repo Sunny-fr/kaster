@@ -1,4 +1,3 @@
-
 const args = process.argv.slice(2)
 const component = args[0]
 const name = args[1] || 'not-named'
@@ -10,14 +9,25 @@ const moduleAvailable = require('./src/moduleAvailable')
 
 const prefix = 'kaster-'
 
-if (moduleAvailable(prefix + component)) {
-  console.log('')
-  console.log( chalk.blue('  -={  Kaster  }=-'))
-  console.log('')
-  console.log( chalk.yellow('casting :', component ))
-  console.log( chalk.yellow('generating', name, 'in', target))
-  console.log('')
+console.log('')
+console.log('')
+console.log(chalk.blue('  -={  Kaster  }=-'))
+console.log('')
+console.log('')
 
-  const cast = new Generate({component: prefix + component, name, target}).build()
+if (!component) {
+    console.log(chalk.red('please provide a generator'))
+    console.log('')
+    console.log('')
+    return;
+}
 
+
+if (moduleAvailable(prefix + component, process.cwd())) {
+    console.log(chalk.yellow('    casting :', component))
+    console.log(chalk.yellow('    generating ', "'" + name + "'", 'in', target))
+    console.log('')
+    console.log('')
+    console.log('')
+    const cast = new Generate({component: prefix + component, name, target}).build()
 }
