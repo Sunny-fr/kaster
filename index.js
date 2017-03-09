@@ -11,7 +11,9 @@ const prefix = 'kaster-'
 
 console.log('')
 console.log('')
-console.log(chalk.blue('  -={  Kaster  }=-'))
+console.log(chalk.blue('  -={    K a s t e r    }=-'))
+console.log('')
+console.log(chalk.blue('           hello ! '))
 console.log('')
 console.log('')
 
