@@ -22,12 +22,14 @@ if (!component) {
     return;
 }
 
-
-if (moduleAvailable(prefix + component, process.cwd())) {
-    console.log(chalk.yellow('    casting :', component))
+const modulePath = moduleAvailable(prefix + component, process.cwd())
+if (modulePath) {
+    console.log('')
+    console.log('')
+    console.log(chalk.yellow('    casting generator:', component))
     console.log(chalk.yellow('    generating ', "'" + name + "'", 'in', target))
     console.log('')
     console.log('')
     console.log('')
-    const cast = new Generate({component: prefix + component, name, target}).build()
+    const cast = new Generate({component: prefix + component, name, target, modulePath}).build()
 }
